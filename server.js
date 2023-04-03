@@ -26,7 +26,6 @@ db.once('open', function () {
   console.log('Mongoose is connected');
 });
 
-
 // *** ENDPOINTS *** and order of these matter so put catch all wild card on the bottom
 //default--BASE-- gives proof of life
 //has two arguments where 1st is a string, 2nd arg is callback that will execute when endpoint is hit; 
@@ -34,6 +33,8 @@ db.once('open', function () {
 app.get('/', (request, response) => {
   response.status(200).send('Welcome to my first server!');
 });
+
+app.get('/surfData', getSurfData);
 
 //catch all for any missed endpoints - lives at the bottom and serve as a 404 error
 app.get('*', (request, response) => {
