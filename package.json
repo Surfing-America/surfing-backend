@@ -1,0 +1,24 @@
+{
+  "name": "surfing-backend",
+  "version": "1.0.0",
+  "description": "Surfing scheduling app for private beach",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Surfing-America/surfing-backend.git"
+  },
+  "author": "Alex Carr, Ryan Eastman, Nick Brown, Dasha Burgos",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Surfing-America/surfing-backend/issues"
+  },
+  "homepage": "https://github.com/Surfing-America/surfing-backend#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2"
+  }
+}
