@@ -3,12 +3,14 @@
 const express = require('express');
 require('dotenv').config(); //new npm install dotenv to run port .env file
 const cors = require('cors');
+const mongoose = require('mongoose');
 
 //Create something to represent server - call express after bringing it in to create server *** app === server ***
 const app = express();
 
 //** MIDDLEWARE - CORS ****
 app.use(cors());
+app.use(express.json());
 
 // *** Port for server to run on; try not to hard code
 const PORT = process.env.PORT || 3002; //to bring in .env file
@@ -16,7 +18,13 @@ const PORT = process.env.PORT || 3002; //to bring in .env file
 
 //get app to run on server,  use listen method ***app.listen(PORT,callback function)
 app.listen(PORT, () => console.log(`listening on ${PORT}`));
+mongoose.connect(process.env.DB_URL);
 
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function () {
+  console.log('Mongoose is connected');
+});
 
 // *** ENDPOINTS *** and order of these matter so put catch all wild card on the bottom
 //default--BASE-- gives proof of life
@@ -25,6 +33,8 @@ app.listen(PORT, () => console.log(`listening on ${PORT}`));
 app.get('/', (request, response) => {
   response.status(200).send('Welcome to my first server!');
 });
+
+app.get('/surfData', getSurfData);
 
 //catch all for any missed endpoints - lives at the bottom and serve as a 404 error
 app.get('*', (request, response) => {
