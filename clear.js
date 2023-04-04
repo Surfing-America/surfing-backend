@@ -3,7 +3,7 @@
 require('dotenv').config();
 const mongoose = require('mongoose');
 
-mongoose.connect(process.env.STORM_GLASS_API);
+mongoose.connect(process.env.DB_URL);
 
 const Calendar = require('./models/calendar.js');
 
