@@ -5,8 +5,8 @@ const express = require('express');
 require('dotenv').config(); //new npm install dotenv to run port .env file
 const cors = require('cors');
 const mongoose = require('mongoose');
-// const getSurfData = require('./modules/weather.js');
 const getWeatherData = require('./modules/weather.js');
+const deleteAppointment = require('./modules/deleteAppointment.js');
 
 //Create something to represent server - call express after bringing it in to create server *** app === server ***
 const app = express();
@@ -31,15 +31,16 @@ db.once('open', function () {
 
 // *** ENDPOINTS *** and order of these matter so put catch all wild card on the bottom
 //default--BASE-- gives proof of life
-//has two arguments where 1st is a string, 2nd arg is callback that will execute when endpoint is hit; 
+//has two arguments where 1st is a string, 2nd arg is callback that will execute when endpoint is hit;
 //callback takes two arg (request, and response)
 app.get('/', (request, response) => {
-  response.status(200).send('Welcome to my first server!');
+  response.status(200).send('Welcome to Surfing America!');
 });
 
-// app.get('/surfData', getSurfData);
-
 app.get('/weatherData', getWeatherData);
+
+app.delete('/calendar/:calendarID', deleteAppointment);
+
 
 //catch all for any missed endpoints - lives at the bottom and serve as a 404 error
 app.get('*', (request, response) => {

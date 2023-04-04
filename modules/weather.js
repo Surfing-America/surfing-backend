@@ -23,7 +23,7 @@ async function getWeatherData(req, res, next) {
       const config = {
         headers: {'Authorization': apiKey},
         method: 'get',
-        baseURL: `https://api.stormglass.io/v2/weather/point?lat=${lat}&lng=${lng}&params=${params}`
+        baseURL: `https://api.stormglass.io/v2/weather/point?lat=${lat}&lng=${lng}&params=${params}&start=2023-04-04T10%3A00%3A00%2B00%3A00&end=2023-04-04T21%3A00%3A00%2B00%3A00&source=noaa`
       };
 
       let waveData = await axios(config);
@@ -46,8 +46,3 @@ async function getWeatherData(req, res, next) {
 
 
 module.exports = getWeatherData;
-
-
-
-
-
