@@ -13,6 +13,6 @@ const calendarSchema = new Schema({
   photography: { type: Boolean, required: true },
 });
 
-const Calendar = mongooose.model('Calendar', calendarSchema);
+const Calendar = mongoose.model('Calendar', calendarSchema);
 
 module.exports = Calendar;
