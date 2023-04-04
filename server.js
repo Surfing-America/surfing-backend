@@ -1,9 +1,12 @@
 'use strict';
+
 // *** Requires ** (similar to import but for the backend)
 const express = require('express');
 require('dotenv').config(); //new npm install dotenv to run port .env file
 const cors = require('cors');
 const mongoose = require('mongoose');
+// const getSurfData = require('./modules/weather.js');
+const getWeatherData = require('./modules/weather.js');
 
 //Create something to represent server - call express after bringing it in to create server *** app === server ***
 const app = express();
@@ -34,7 +37,9 @@ app.get('/', (request, response) => {
   response.status(200).send('Welcome to my first server!');
 });
 
-app.get('/surfData', getSurfData);
+// app.get('/surfData', getSurfData);
+
+app.get('/weatherData', getWeatherData);
 
 //catch all for any missed endpoints - lives at the bottom and serve as a 404 error
 app.get('*', (request, response) => {
@@ -44,4 +49,5 @@ app.get('*', (request, response) => {
 // **** ERROR HANDLING - PLUG AND PLAY CODE FROM EXPRESS DOCS ****
 app.use((error, request, response, next) => {
   response.status(500).send(error.message);
+  next(error);
 });
