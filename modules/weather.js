@@ -9,7 +9,7 @@ const apiKey = process.env.STORM_GLASS_API;
 async function getWeatherData(req, res, next) {
   try {
     const lat = 32.39;
-    const lng = 117.10;
+    const lng = -117.10;
     const params = 'waveHeight,waterTemperature,swellHeight,swellDirection,swellPeriod';
     let key = params;
 
