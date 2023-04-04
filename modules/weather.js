@@ -19,7 +19,7 @@ async function getWeatherData(req, res, next) {
       res.status(200).send(cache[key].data);
     } else {
       console.log('Weather data is not in the cache!');
-      let url = `https://api.stormglass.io/v2/weather/point?lat=${lat}&lng=${lng}&params=${params}`;
+
       const config = {
         headers: {'Authorization': apiKey},
         method: 'get',
