@@ -27,15 +27,20 @@ async function getWeatherData(req, res, next) {
       };
 
       let waveData = await axios(config);
+      // console.log('WAVE DATA:', waveData);
 
-      console.log('Axios WaveData', waveData.data);
+      let mappedWaveData = waveData.data.hours.map(waves => {
+        return new Weather(waves);
+      });
+
+      // console.log('Axios WaveData', mappedWaveData);
 
       cache[key] = {
-        data: waveData.data,
+        data: mappedWaveData,
         timestamp: Date.now()
       };
 
-      console.log('Added to cache:', cache);
+      // console.log('Added to cache:', cache);
       res.status(200).send(waveData.data);
     }
 
@@ -44,5 +49,16 @@ async function getWeatherData(req, res, next) {
   }
 }
 
+class Weather {
+  constructor(waveObj){
+    this.time= waveObj.hours.time.noaa;
+    this.swellDirection = waveObj.swellDirection.noaa;
+    this.swellHeight = waveObj.swellHeight.noaa;
+    this.swellPeriod = waveObj.swellPeriod.noaa;
+    this.waterTemperature = waveObj.waterTemperature.noaa;
+    this.waveHeight = waveObj.waveHeight.noaa;
+  }
+
+}
 
 module.exports = getWeatherData;
