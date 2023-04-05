@@ -40,7 +40,7 @@ async function getWeatherData(req, res, next) {
         timestamp: Date.now()
       };
 
-      // console.log('Added to cache:', cache);
+      console.log('Added to cache:', cache);
       res.status(200).send(waveData.data);
     }
 
@@ -51,7 +51,7 @@ async function getWeatherData(req, res, next) {
 
 class Weather {
   constructor(waveObj){
-    this.time= waveObj.hours.time.noaa;
+    // this.time= waveObj.hours.time.noaa;
     this.swellDirection = waveObj.swellDirection.noaa;
     this.swellHeight = waveObj.swellHeight.noaa;
     this.swellPeriod = waveObj.swellPeriod.noaa;
