@@ -6,6 +6,8 @@ require('dotenv').config(); //new npm install dotenv to run port .env file
 const cors = require('cors');
 const mongoose = require('mongoose');
 const getWeatherData = require('./modules/weather.js');
+const postAppointment = require('./modules/postAppointment.js');
+const updateAppointment = require('./modules/updateAppointment.js');
 const deleteAppointment = require('./modules/deleteAppointment.js');
 
 //Create something to represent server - call express after bringing it in to create server *** app === server ***
@@ -38,6 +40,10 @@ app.get('/', (request, response) => {
 });
 
 app.get('/weatherData', getWeatherData);
+
+app.post('/calendar', postAppointment);
+
+app.put('/calendar/:calendarID', updateAppointment);
 
 app.delete('/calendar/:calendarID', deleteAppointment);
 
