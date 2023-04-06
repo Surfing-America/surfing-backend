@@ -4,7 +4,7 @@ const Calendar = require('../models/calendar.js');
 
 async function updateAppointment(request, response, next) {
   try {
-    // ID - the book to update, DATA - the info to update the book with
+    // ID - the appt to update, DATA - the info to update the appt with
     let id = request.params.calendarID;
     let data = request.body;
 
