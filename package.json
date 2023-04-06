@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/Surfing-America/surfing-backend#readme",
   "dependencies": {
+    "@auth0/auth0-react": "^2.0.1",
     "axios": "^1.3.4",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
