@@ -10,6 +10,7 @@ const calendarSchema = new Schema({
   groupSize: { type: String, required: true },
   insurance: { type: Boolean},
   photography: { type: Boolean},
+  email: {type: String}
 });
 
 const Calendar = mongoose.model('calendar', calendarSchema);
