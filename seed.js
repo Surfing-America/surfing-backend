@@ -25,7 +25,7 @@ async function seed() {
   console.log('Watch out for SEALs! I heard those things killed Bin Laden!');
 
   await Calendar.create({
-    date: '08 April 2023',
+    // date: '08 April 2023',
     contactInfo: 'AuDrEyWaShErE@gmail.com',
     groupSize: 'All of 301d97',
     insurance: false,
@@ -35,7 +35,7 @@ async function seed() {
   console.log('Audrey is taking us to the surf');
 
   await Calendar.create({
-    date: '09 April 2023',
+    // date: '09 April 2023',
     contactInfo: 'surfingAmerica1776@gmail.com',
     groupSize: '10',
     insurance: false,
