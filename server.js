@@ -6,6 +6,7 @@ require('dotenv').config(); //new npm install dotenv to run port .env file
 const cors = require('cors');
 const mongoose = require('mongoose');
 const getWeatherData = require('./modules/weather.js');
+const getAppointment = require('./modules/getAppointment.js');
 const postAppointment = require('./modules/postAppointment.js');
 const updateAppointment = require('./modules/updateAppointment.js');
 const deleteAppointment = require('./modules/deleteAppointment.js');
@@ -40,6 +41,8 @@ app.get('/', (request, response) => {
 });
 
 app.get('/weatherData', getWeatherData);
+
+app.get('/calendar', getAppointment);
 
 app.post('/calendar', postAppointment);
 
